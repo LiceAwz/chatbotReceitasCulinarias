@@ -2,24 +2,26 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Receitas Culinarias</title>
+    <title>Receitas Culinárias - Chatbot</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <h2>Receitas Culinarias</h2>
-        <div class="chat-area">
-
-        </div>
-        <div class="input-area">
-            <input type="text" id="input-question" placeholder="Digite sua pergunta aqui">
-            <button onclick="sendQuestion()">Enviar</button>
-        </div>
-        <div class="buttons-area">
-            <button onclick="restartChat()">Reiniciar</button>
-            <button onclick="stopChat()">Encerrar</button>
+<div class="overlay"></div>
+<div class="main-container">
+    <div class="chat-box">
+        <div id="chat-area">
+            <!-- Mensagens do chat aparecerão aqui -->
         </div>
     </div>
-    <script src="script.js"></script>
+    <div class="input-container">
+        <input type="text" id="input-question" placeholder="Digite sua receita desejada...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+    <div class="buttons-area">
+        <button onclick="restartChat()">Reiniciar</button>
+        <button onclick="endChat()">Encerrar</button>
+    </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

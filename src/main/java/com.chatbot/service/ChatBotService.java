@@ -31,6 +31,6 @@ public class ChatBotService {
                 return pair.getAnswer();
             }
         }
-        return "Desculpe, não sei essa receita. Pergunte de outra forma ou tente outra receita!";
+        return "Desculpe, não sei essa receita. Tente outra receita!";
  }
 }

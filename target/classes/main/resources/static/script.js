@@ -10,25 +10,33 @@ function addMessage(content, type) {
 }
 
 function sendMessage() {
-    const question = inputQuestion.value.trim();
-    if (!question) return;
+    const pergunta = inputQuestion.value.trim();
+    if (!pergunta) return;
 
-    addMessage(question, 'user');
+    addMessage(pergunta, 'user');
     inputQuestion.value = '';
 
     fetch('/api/chatbot/perguntar', {
         method: 'POST',
         headers: {'Content-Type': 'text/plain'},
-        body: question
+        body: pergunta
     })
         .then(response => response.text())
-        .then(answer => addMessage(answer, 'bot'))
+        .then(resposta => {
+            // TROCA a resposta padrão do back por "Receita indisponível"
+            if (resposta.startsWith("Desculpe, não sei essa receita")) {
+                addMessage("Receita indisponível, por favor escolha outra!", 'bot');
+            } else {
+                addMessage(resposta, 'bot');
+            }
+        })
         .catch(() => addMessage("Ops, houve um erro ao se comunicar com o Chatbot.", 'bot'));
 }
 
 function restartChat() {
     chatArea.innerHTML = '';
-    addMessage("Olá! Pergunte por uma receita de cozinha.", 'bot');
+    addMessage("Seja Bem vindo, por favor escolha a receita que deseja", 'bot');
+    inputQuestion.disabled = false;
 }
 
 function endChat() {
